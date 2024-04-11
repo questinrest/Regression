@@ -27,5 +27,8 @@ color = st.selectbox('Color', ("J", "I", "H", "G", "F", "E", "D"))
 clarity = st.selectbox('Clarity', ("I1", "SI2", "SI1", "VS2", "VS1", "VVS2", "VVS1", "IF"))
 
 if st.button('Predict'):
-    price = predict_price(carat, cut, color, clarity)
-    st.success(f'The predicted price is ${price:.2f}')
+    try:
+        price = predict_price(carat, cut, color, clarity)
+        st.success(f'The predicted price is ${price:.2f}')
+    except Exception as e:
+        st.error(f'Error: {e}')
